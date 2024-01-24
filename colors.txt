@@ -1,0 +1,5 @@
+000000 = Black
+66666E = Dim Gray
+9999A1 = Taupe Gray
+E6E6E9 = Platinum
+F4F4F6 = Anti-flash white
