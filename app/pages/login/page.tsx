@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/app/components/reusable/button";
+import { useRouter } from "next/navigation";
 import { useState, ChangeEvent } from "react";
 import {
   Card,
@@ -10,13 +10,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 interface login {
   name: String;
 }
 
 const page: React.FC = () => {
+  const router = useRouter();
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
 
@@ -30,6 +32,10 @@ const page: React.FC = () => {
 
   const handleSubmit = () => {};
 
+  const handleRegister = () => {
+    router.push('/pages/register');
+  }
+
   return (
     <div className="bg-black h-screen flex justify-center items-center">
       <Card className="w-[350px]">
@@ -37,12 +43,15 @@ const page: React.FC = () => {
           <CardTitle className="text-[30px] font-bold">Evento</CardTitle>
           <CardDescription>Login to your account</CardDescription>
         </CardHeader>
-        <CardContent className="grid">
+        <CardContent className="grid space-y-4">
           <Input placeholder="Email"/>
           <Input placeholder="Password"/>
         </CardContent>
-        <CardFooter>
-          <p>Card Footer</p>
+        <CardContent>
+          <Button className="w-full py-4">Login</Button>
+        </CardContent>
+        <CardFooter className="w-full flex justify-center">
+          <CardContent className="text-[14px]">Already Registered?<Button variant="link" onClick={handleRegister}>Register</Button></CardContent>
         </CardFooter>
       </Card>
     </div>
