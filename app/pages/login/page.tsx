@@ -51,7 +51,7 @@ const page: React.FC = () => {
           <Button className="w-full py-4">Login</Button>
         </CardContent>
         <CardFooter className="w-full flex justify-center">
-          <CardContent className="text-[14px]">Already Registered?<Button variant="link" onClick={handleRegister}>Register</Button></CardContent>
+          <CardContent className="text-[14px]">Register here if haven't<Button variant="link" onClick={handleRegister}>Register</Button></CardContent>
         </CardFooter>
       </Card>
     </div>

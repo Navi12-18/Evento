@@ -1,11 +1,21 @@
-"use client"
+"use client";
+import { useRouter } from "next/navigation";
+import { useState, ChangeEvent } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-import Button from "@/app/components/reusable/button";
-import Input from "@/app/components/reusable/input";
-import { ChangeEvent, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 
 const page:React.FC = () => {
+  const router = useRouter();
   const[email, setEmail] = useState("");
   const[password, setPassword] = useState("");
   const[firstName,setFirstName] = useState("");
@@ -30,21 +40,31 @@ const page:React.FC = () => {
   const handleSubmit = () => {
     
   }
+
+  const handleRegister = () => {
+    router.push('/pages/login');
+  }
     
   return (
-    <div className = "h-screen w-screen flex justify-center items-center">
-      <div className = "border-[5px] rounded-lg w-[350px] p-4 flex flex-col justify-center items-center bg-[#E6E6E9] shadow-[#E6E6E9]">
-        <div className = "mb-5 flex flex-col items-center">
-          <h1 style={{fontFamily: 'Montserrat, sans-serif'}} className="text-[30px] font-sans font-bold ">Evento</h1>
-          <h1 style={{fontFamily: 'Montserrat, sans-serif'}} className="text-[20px] font-sans font-bold ">Event management made easy</h1>
-        </div>
-        <p className="font-sans text-[20px] font-semibold">Register</p>
-        <Input value = {firstName} onChange = {handleFirstNameChange} placeholder = "Enter First Name"></Input>
-        <Input value = {lastName} onChange = {handleLastNameChange} placeholder = "Enter Last Name"></Input>
-        <Input value = {email} onChange = {handleEmailChange} placeholder = "Enter Email"></Input>
-        <Input value = {password} onChange = {handlePasswordChange} placeholder = "Enter Password"></Input>
-        <Button label = "Login" onSubmit={handleSubmit}></Button>
-      </div>
+    <div className = "bg-black h-screen flex justify-center items-center">
+      <Card className="w-[350px]">
+        <CardHeader className="text-center">
+          <CardTitle className="text-[30px] font-bold">Evento</CardTitle>
+          <CardDescription>Event management made easy</CardDescription>
+        </CardHeader>
+        <CardContent className="grid space-y-4">
+          <Input placeholder="First Name"/>
+          <Input placeholder="Last Name"/>
+          <Input placeholder="Your Email"/>
+          <Input placeholder="Your Password"/>
+        </CardContent>
+        <CardContent>
+          <Button className="w-full py-4">SignUp</Button>
+        </CardContent>
+        <CardFooter className="w-full flex justify-center">
+          <CardContent className="text-[14px]">Already Registered?<Button variant="link" onClick={handleRegister}>Login</Button></CardContent>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
